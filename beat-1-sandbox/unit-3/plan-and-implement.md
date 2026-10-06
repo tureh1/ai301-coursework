@@ -19,7 +19,7 @@ tureh1
 
 **Plan comment**
 
-PASTE-COMMENT-PERMALINK-HERE
+https://github.com/codepath/pathreview-ai301-fa26-s1/issues/61#issuecomment-6019047568
 
 Plan, building on [my reproduction above](https://github.com/codepath/pathreview-ai301-fa26-s1/issues/61#issuecomment-5896400922) (`main` at `f89c06f`, Windows 11 with Docker Desktop, Python 3.12.10, SQLAlchemy 2.1.1, asyncpg 0.31.0, `postgres:16-alpine`).
 
