@@ -1,0 +1,38 @@
+# Rubric: is this pull request ready to submit?
+
+This rubric grades one PR package: a title, a description, the commits
+and diff, and the test evidence, read against the plan the PR claims to
+implement, the issue that plan belongs to, and the repo's stated
+standards. Every check compares two things side by side and judges the
+outcome, never the write-up's shape: a terse PR can pass every check,
+and a polished one can fail on a single hunk. A PR that does less than
+everything and says so honestly is graded on what it claims, not held
+for the shortfall.
+
+## Checks
+
+| Check | Evidence | Pass condition | Weight |
+|---|---|---|---|
+| diff-matches-plan | Every hunk of the diff, file by file, read against the plan's scope (its change, its in-scope and not-in-scope lines, its files) and its deviation notes; then every deliverable the plan names, read against the diff. | Pass if (a) every hunk implements the plan's stated change, adds or updates a test for it, or adds an entry the repo's stated asks require for this change (a changelog, whatsnew, or i18n entry), or is explained by a deviation note in the plan or the description; AND (b) every deliverable the plan commits to (each named fix site, file, doc update, or test) is present in the diff, or its absence is stated in the plan's deviation or deferral notes or in the description. Fail if the diff adds work the plan does not name and no note explains it: a new flag, option, setting, or prop; a rename or refactor pass; a rewrite of a file or function the plan does not touch; a behavior change outside the planned site. Fail also if a planned deliverable is missing and nothing says so. A disclosed shortfall or disclosed extra passes this check. | required |
+| description-matches-diff | Every factual claim in the PR title and description about what the change does or contains ("implements the plan exactly", "no functional changes outside X", "docs updated", "CHANGELOG entry added", "tests cover A, B, C"), each read against the diff. | Pass if every such claim is true of the diff: each file, entry, test, or behavior the description says is there is in the diff, and each limit it states ("only X", "nothing else", "exactly as planned") holds for every hunk. Fail if any claim is contradicted by the diff, in either direction: the description claims something the diff does not contain, or claims a limit or fidelity that a hunk breaks. A description that says nothing false passes, however short it is. | required |
+| repro-rerun | The test evidence (and any before/after in the description), read against the plan's test plan and the reproduction it builds on: the exact trigger (command, input, file shape, flag, or scenario) and the expected-after result the plan names. | Pass if the evidence re-runs the plan's own reproduction trigger on the changed code and shows the observable after-result the plan expects (an output, value, exit status, rendered state, or log line), with the before stated or shown beside it. Where the plan's test plan names more than one failure mode or repro of the bug, each one must be re-run with its output shown. Controls (runs the plan expects to stay unchanged, such as the no-trigger case or a reference tool) are not failure modes: a plain statement that a control is unchanged is enough for them, and no output is required. A test the diff adds counts only when it exercises the reproduced trigger, and its result is shown. Fail if the only evidence is an assertion ("tested locally", "verified working on my machine", "works now"), or if the evidence exercises a different path than the reproduction (a control, the single-file case when the bug is cross-file, a different method or input shape) instead of the trigger itself. | required |
+| checks-reported | The test evidence and the description, read against the test or check commands named in the plan's test plan and in the repo's stated asks (the PR template's checklist, the contributing guide's required commands). | Pass if every suite or check the plan's test plan or the repo's stated asks name was run and its outcome is visible, with the command or suite named and a result (passed, a count, or an honestly reported failure with its reason). Pass on that ground if neither the plan's test plan nor the repo's stated asks name any suite or check. Fail if a named suite or check is never reported, or if the only report is an unnamed "all tests pass". | required |
+| diff-is-clean | The added lines of every hunk in the diff, plus the commit list. | Pass if every added or changed line serves the planned change, its test, or a required entry. Comments that explain the fix are fine, and a few identical context lines re-printed inside a hunk that also makes a real change are fine. Fail if the diff adds any debris: a debug print or log line (active or commented out), commented-out code, a dead or unused function or variable, a leftover TODO or FIXME, an import reorganization or reformatting the fix does not need, or a hunk whose only changes are formatting or identical re-printed lines. Commit messages like "wip", "fmt", or "cleanups while debugging" are a tell to look harder at the diff, but never fail this check on their own. | required |
+| standards-met | The repo-facts block's stated PR asks (template sections, required checklist items, issue-reference line, required files such as a changelog or whatsnew entry) and its contribution and AI policy (in live mode: the PR template, `docs/CONTRIBUTING.md`, and `scope.md`'s house rules), each read against the description and the diff. | Pass if every ask the repo states is honored: each required template section or checklist is present with real content (not left as the template's placeholder), the issue is referenced in the form the repo asks for, each required file entry appears in the diff, and every condition the AI policy places on PRs is met. Where the policy requires AI usage to be disclosed (in any form, or in pull requests), the description must disclose it, naming the tool or the fact of AI assistance and its extent; treat every package as AI-assisted work, so a description silent about AI fails. Where the policy places no condition on PR text (no AI policy, or "you are responsible for what you submit"), no disclosure is needed. Pass on that ground if the repo states no asks at all. | required |
+| thread-engaged | The thread highlights' explicit direction from maintainers (OWNER, MEMBER, COLLABORATOR, or CONTRIBUTOR roles), read against the description. | Pass if the description follows each such direction or names it and says why the PR differs, or if the thread contains no explicit maintainer direction. This check never changes the verdict; it shows whether the PR answers the people who will review it. | preferred |
+
+## Verdict rule
+
+The verdict is `accept` if and only if every `required` check is graded
+`pass`. One `required` check graded `fail` makes the verdict `reject`.
+A `required` check graded `unclear` counts as `fail` and makes the
+verdict `reject`: a PR whose readiness cannot be verified from the
+package is not ready to submit, and the repair belongs to the author
+supplying what is missing. Grade `unclear` only when the evidence a
+check names is genuinely absent from the package (for example, no test
+evidence section at all), never to dodge a close call. For a close
+call, apply the pass condition's words and choose `pass` or `fail`.
+
+`preferred` checks never change the verdict in either direction. Report
+their grades so the author can see what would strengthen the PR, then
+leave them out when applying the rule above.

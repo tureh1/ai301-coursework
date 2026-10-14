@@ -159,3 +159,21 @@ said:
 
 The plan comment (`comment.md`) still describes what I built, so posting
 it as written needs no follow-up correction.
+
+**Unit 4 (PR prep, 2026-10-13).** The code still matches this plan:
+the PR is the same single commit, `cde7071`, touching only
+`api/routes/health.py` and `tests/unit/test_health.py`. Three things to
+note about testing:
+
+- The live repro re-run used port **8010** instead of 8000, because
+  another program on my machine now holds port 8000. The port has
+  nothing to do with the bug. The result is the one predicted above:
+  `"postgres": "healthy"`, `postgres_health_check_passed`, and still 503
+  because of #62.
+- `make` is not installed on my machine, so I ran the command behind
+  each Makefile target directly (`pytest tests/unit -m unit`,
+  `pytest tests/integration -m integration`, `ruff check .`, `mypy ...`).
+  The PR description lists them.
+- `git grep -n "issue #61:" -- tests` finds no xfail marker for #61, so
+  there was nothing to remove, and the mypy override stays unchanged
+  for the reasons in Scope.
