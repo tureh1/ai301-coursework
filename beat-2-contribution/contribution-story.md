@@ -1,4 +1,4 @@
-# Contribution: [Issue Title]
+# Contribution: Clean up leaked temp directories in 3 gateway test files
 
 Path: `beat-2-contribution/contribution-story.md`
 
@@ -8,10 +8,9 @@ format criteria grade exactly that. Your course repo link is the whole submissio
 files and no evidence uploads are part of Assignment 5.
 
 **Contribution Number:** [1]
-**Student:** [Student name]
-**GitHub Username:** [your GitHub username, exactly as it appears on your profile - no @, no
-profile URL. Your comments upstream are identified by this name.]
-**Issue:** [GitHub issue link]
+**Student:** Tu Reh
+**GitHub Username:** tureh1
+**Issue:** https://github.com/nimbus-agent/Nimbus/issues/973
 **Pull Request:** [GitHub PR link, once opened]
 
 One repository, built across units 5 to 8, telling the whole story of your real
@@ -55,16 +54,13 @@ happened; these entries are the toolkit's own timeline.
 All four entries are graded. Keep every heading below, and fill each
 one in the week it belongs to.
 
-**Unit 5: [one line on the tool work]**
+**Unit 5: Built and tested an issue scout against live GitHub results**
 
-[2-4 sentences: what you built (the scout, your strategy), what broke
-or fell short, what changed because of it.]
+I built an issue scout around my Python/backend and React/TypeScript fit profile, with three GitHub queries and ranking rules that graded the top five candidates. Its first live scan accepted four issues and rejected one, but recency pushed brand-new solo repositories to the top and the availability check did not explicitly catch work already completed by a merged pull request. I patched that check so a merged PR that implemented the issue now makes the issue unavailable, and recorded the remaining ranking and language limitations in `scan-notes.md`.
 
-**Unit 6: [one line on the tool work]**
+**Unit 6: Added a voice guard and repo-specific memory for upstream work**
 
-[2-4 sentences: the voice-guard, the repo-memory file. What broke or
-fell short, and what changed because of it. "Nothing broke" counts when
-it is true - say how you know.]
+I promoted my voice guide to one canonical voice-guard folder, added rules for claims, questions, and pings, and checked my claim draft with both repro-check and the guard before posting it through Claude Code. Windows would not create the shared symbolic links from the installer, so I used the documented pointer-file fallback and kept the canonical guide as the source of truth. I also created a local `CLAUDE.local.md` for Nimbus that records its contribution rules, the four files relevant to the database-test leak, and the exact Bun checks; `.git/info/exclude` keeps that memory out of the pull request.
 
 **Unit 7: [one line on the tool work]**
 
@@ -80,24 +76,16 @@ drafted, what you did with the draft.]
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs in your own words: how you searched, what your scan
-surfaced, what your scout's verdict said, why this issue fits your
-profile, and what you hope to learn. If your scout's verdict on it
-was reject and you chose it anyway, say so here and say why; choosing
-against your own tool silently is what loses points. Close with an
-honest read of the tool itself: where the scout fell short on a real
-wild search and what you changed or would change, or what convinced
-you it held up. **Record the link to your claim comment in this section too.**
-Not claimed yet? Write `claim pending` and today's date where the link goes,
-and add the link the moment your claim lands.]
+I found this issue on the AI301 Issue Selection site after filtering for Python, JavaScript, and TypeScript work tagged `bug` or `good first issue`. My scout first graded DNA #254, DNA #255, and WebDevTools #402, but rejected all three because open pull requests were already doing the work. I then graded Nimbus #973, Kaoto #3445, and Meteor #14910. It accepted Nimbus #973 as straightforward, accepted Kaoto #3445 as ambitious because maintainers disagreed about the solution, and rejected Meteor #14910 because it already had an active pull request.
+
+I chose Nimbus #973 because it is a bounded TypeScript testing fix I can reproduce on Windows without a paid service or special hardware. The issue names the affected file, supplies an existing cleanup pattern, and requires a measurable before-and-after count, so the finished contribution can show both implementation and evidence. I hope to learn Bun's test lifecycle hooks and better cross-platform temporary-file hygiene. The scout was useful at finding hidden work in open pull requests, but its first scan overvalued brand-new repositories and a language match did not always mean the issue itself used that language; I recorded both limitations and tightened the availability check. **Claim comment:** https://github.com/nimbus-agent/Nimbus/issues/973#issuecomment-6615026042
 
 **Toolkit**
 
-- Tool: issue-scout (your scout: your search strategy, your rubric),
-  and how you used it
-- What it produced: [the scan and its verdict on this issue, described]
-- Difficulties: [where it fell short, or "none met" if none did]
-- What changed: [what you patched or would update, or "nothing"]
+- Tool: issue-scout; I used my fit profile, three GitHub queries, ranking rules, and direct URL grading on the site finalists.
+- What it produced: It accepted Nimbus #973 with a straightforward difficulty note and evidence that the repository was active, the work was unclaimed, AI assistance was allowed, and the acceptance test was concrete.
+- Difficulties: The first ranking favored brand-new repositories, and issue pages without assignees still had active pull requests that made the work unavailable.
+- What changed: I patched the availability check to reject already-implemented issues, logged the search limitations, and re-picked instead of competing with an existing contributor.
 
 ---
 
