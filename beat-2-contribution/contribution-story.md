@@ -1,4 +1,4 @@
-# Contribution: Clean up leaked temp directories in 3 gateway test files
+# Contribution: Implement Jest Tests for Readme Generator
 
 Path: `beat-2-contribution/contribution-story.md`
 
@@ -10,7 +10,7 @@ files and no evidence uploads are part of Assignment 5.
 **Contribution Number:** [1]
 **Student:** Tu Reh
 **GitHub Username:** tureh1
-**Issue:** https://github.com/nimbus-agent/Nimbus/issues/973
+**Issue:** https://github.com/Bashamega/WebDevTools/issues/393
 **Pull Request:** [GitHub PR link, once opened]
 
 One repository, built across units 5 to 8, telling the whole story of your real
@@ -58,9 +58,9 @@ one in the week it belongs to.
 
 I built an issue scout around my Python/backend and React/TypeScript fit profile, with three GitHub queries and ranking rules that graded the top five candidates. Its first live scan accepted four issues and rejected one, but recency pushed brand-new solo repositories to the top and the availability check did not explicitly catch work already completed by a merged pull request. I patched that check so a merged PR that implemented the issue now makes the issue unavailable, and recorded the remaining ranking and language limitations in `scan-notes.md`.
 
-**Unit 6: Added a voice guard and repo-specific memory for upstream work**
+**Unit 6: Guarded my upstream claim and cached the Readme generator's test context**
 
-I promoted my voice guide to one canonical voice-guard folder, added rules for claims, questions, and pings, and checked my claim draft with both repro-check and the guard before posting it through Claude Code. Windows would not create the shared symbolic links from the installer, so I used the documented pointer-file fallback and kept the canonical guide as the source of truth. I also created a local `CLAUDE.local.md` for Nimbus that records its contribution rules, the four files relevant to the database-test leak, and the exact Bun checks; `.git/info/exclude` keeps that memory out of the pull request.
+I promoted my voice guide to one canonical voice-guard folder, added rules for claims, questions, and pings, and checked the replacement claim with both repro-check and the guard before posting it through Claude Code. Windows would not create the shared symbolic links from the installer, so I used the documented pointer-file fallback and kept the canonical guide as the source of truth. I also replaced the old repo memory with a local `CLAUDE.local.md` for WebDevTools that records the Readme generator files, Jest conventions, download mocks, and exact checks; `.git/info/exclude` keeps it out of the pull request.
 
 **Unit 7: [one line on the tool work]**
 
@@ -76,16 +76,16 @@ drafted, what you did with the draft.]
 
 ## Why I Chose This Issue
 
-I found this issue on the AI301 Issue Selection site after filtering for Python, JavaScript, and TypeScript work tagged `bug` or `good first issue`. My scout first graded DNA #254, DNA #255, and WebDevTools #402, but rejected all three because open pull requests were already doing the work. I then graded Nimbus #973, Kaoto #3445, and Meteor #14910. It accepted Nimbus #973 as straightforward, accepted Kaoto #3445 as ambitious because maintainers disagreed about the solution, and rejected Meteor #14910 because it already had an active pull request.
+I found this issue on the AI301 Issue Selection site after filtering for Python, JavaScript, and TypeScript work tagged `bug` or `good first issue`. My earlier scout rounds rejected DNA #254, DNA #255, WebDevTools #402, and Meteor #14910 because open pull requests were already doing the work. I initially claimed Nimbus #973, but its repository required assignment before starting and the maintainer did not respond. I then checked HyP3 #2551 and Altinn #14230, but their threads showed earlier human claims, so I graded WebDevTools #393, #401, and #395 as replacements. The scout accepted all three and ranked #393 first with moderate difficulty because it is one interactive React page with a direct mapping from its behavior to Jest tests.
 
-I chose Nimbus #973 because it is a bounded TypeScript testing fix I can reproduce on Windows without a paid service or special hardware. The issue names the affected file, supplies an existing cleanup pattern, and requires a measurable before-and-after count, so the finished contribution can show both implementation and evidence. I hope to learn Bun's test lifecycle hooks and better cross-platform temporary-file hygiene. The scout was useful at finding hidden work in open pull requests, but its first scan overvalued brand-new repositories and a language match did not always mean the issue itself used that language; I recorded both limitations and tightened the availability check. **Claim comment:** https://github.com/nimbus-agent/Nimbus/issues/973#issuecomment-6615026042
+I chose WebDevTools #393 because it is a bounded React testing contribution I can run locally on Windows without paid services or special hardware. It lets me demonstrate Jest, React Testing Library, accessible queries, DOM API mocking, coverage evidence, and developer documentation in one focused pull request. I hope to learn how to test generated iframe content and browser downloads without coupling tests to implementation details. The scout prevented me from competing with several existing contributors, but it missed likely review latency: two similar test pull requests have been waiting since April, so I recorded that limitation and chose the page with the clearest finishable scope. **Claim comment:** https://github.com/Bashamega/WebDevTools/issues/393#issuecomment-6643319296
 
 **Toolkit**
 
-- Tool: issue-scout; I used my fit profile, three GitHub queries, ranking rules, and direct URL grading on the site finalists.
-- What it produced: It accepted Nimbus #973 with a straightforward difficulty note and evidence that the repository was active, the work was unclaimed, AI assistance was allowed, and the acceptance test was concrete.
-- Difficulties: The first ranking favored brand-new repositories, and issue pages without assignees still had active pull requests that made the work unavailable.
-- What changed: I patched the availability check to reject already-implemented issues, logged the search limitations, and re-picked instead of competing with an existing contributor.
+- Tool: issue-scout; I used my fit profile, three GitHub queries, and direct URL grading on each replacement finalist.
+- What it produced: It accepted WebDevTools #393, #401, and #395 and ranked #393 first because the Readme generator is one interactive page with concrete rendering, interaction, and state behavior to test.
+- Difficulties: Open issues without assignees were often already claimed in comments, and the rubric's activity check did not reveal that similar test PRs had waited months for review.
+- What changed: I checked every comment and related PR before claiming, logged review latency as a scout limitation, and selected the clearest scope rather than the most impressive title.
 
 ---
 
@@ -93,26 +93,26 @@ I chose Nimbus #973 because it is a bounded TypeScript testing fix I can reprodu
 
 **Problem Description**
 
-[In your own words, what is broken or missing?]
+The Readme generator has no Jest tests. Its form state, Markdown generation, iframe preview, and download behavior can change without any focused automated test detecting a regression.
 
 **Expected Behavior**
 
-[What should happen?]
+The repository should have passing tests that prove the page renders its controls, responds to user input, updates the generated preview, and creates a Markdown download with the expected filename and content.
 
 **Current Behavior**
 
-[What actually happens?]
+The existing Jest suite passes, but it never imports the Readme generator. A coverage run against its page reports 0% for statements, branches, functions, and lines.
 
 **Affected Components**
 
-[Which parts of the codebase are involved?]
+The main component is `src/app/customizer/Readme-generator/page.jsx`. The new focused test belongs under `__tests__/customizer/Readme-generator/`; `jest.config.js` and `jest.setup.js` provide jsdom, path aliases, and jest-dom matchers, while `contributing.md` needs the requested test-running instructions.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: scoped Claude Code orientation plus direct source reading.
+- What it produced: A four-file map of the component, its future test, Jest configuration, and developer documentation, including the DOM APIs that require mocks.
+- Difficulties: The issue's template language was broad and did not identify the exact page behavior or existing test conventions.
+- What changed: I narrowed the contribution to observable rendering, input, preview, and download behavior and recorded the boundaries in `CLAUDE.local.md`.
 
 ---
 
@@ -120,31 +120,27 @@ I chose Nimbus #973 because it is a bounded TypeScript testing fix I can reprodu
 
 **Environment Setup**
 
-[What a stranger would need to stand this up: your operating system,
-the relevant versions (language, runtime, package manager, the project
-itself), and how you set the project up. Then the challenges you faced
-and how you solved them, or that none came up.]
+I used Windows 11 with PowerShell, Node.js v24.12.0, and npm 11.6.2. I forked `Bashamega/WebDevTools`, cloned it with `origin` pointing to my fork and `upstream` pointing to the source repository, then created `test/readme-generator-jest-tests` from upstream commit `b62f4817f2dd24699c1d2038088ff5fb76115eb1`. The first `npm ci` attempt hit a transient OneDrive `EPERM` while creating a nested Jest directory; the same clean install succeeded on retry and installed 1,138 packages.
 
 **Steps to Reproduce**
 
-1. [Step 1]
-2. [Step 2]
-3. [Observed result]
+1. From the repository root, set `$env:NODE_OPTIONS='--experimental-vm-modules'` in PowerShell.
+2. Run `npx jest --coverage --collectCoverageFrom='src/app/customizer/Readme-generator/page.jsx' --runInBand` against the untouched upstream commit.
+3. Observe that all 8 existing suites and 31 tests pass, while `page.jsx` reports 0% statements, branches, functions, and lines with lines 3–167 uncovered.
+4. As a contrast, run coverage for `__tests__/lib/generator/sitemapXml.test.js`; its tested source reports 76.92% statement and line coverage, proving the tool records nonzero coverage when tests exercise a selected file.
 
 **Reproduction Evidence**
 
-- **Commit showing reproduction:** [link to commit in your fork]
-- **Screenshots/logs:** [if applicable]
-- **My findings:** [what you discovered during reproduction; an
-  honest, evidenced cannot-reproduce that led you to re-pick or ask
-  the maintainer belongs here and costs you nothing]
+- **Commit showing reproduction:** none; reproduction required no code changes and used upstream commit `b62f4817f2dd24699c1d2038088ff5fb76115eb1`.
+- **Screenshots/logs:** Jest reported `page.jsx | 0 | 0 | 0 | 0 | 3-167`, followed by `Test Suites: 8 passed, 8 total` and `Tests: 31 passed, 31 total`.
+- **My findings:** The issue is reproducible today. Jest itself is working, but none of the current tests import or execute the Readme generator; the contrast run measured substantial coverage for an existing tested module.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: repro-check; I graded the public claim and the pinned reproduction report together against the live issue.
+- What it produced: An accepted report with a rerunnable environment, exact commands, a zero-coverage artifact, and an honest conclusion tied to the issue.
+- Difficulties: The first draft used an unproved adjective and treated passing suites from the same run as the control; dependency installation also failed once under OneDrive.
+- What changed: I removed the unsupported claim, included the exact `EPERM` line, and added a separate contrast coverage run that produced nonzero results for a tested module.
 
 ---
 
