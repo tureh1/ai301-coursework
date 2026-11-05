@@ -218,7 +218,7 @@ I temporarily broke `page.jsx` (removed the badge trim and renamed the download)
 **Maintainer Feedback:**
 
 - 2026-11-04: CodeRabbit (a bot) rated the merge risk minimal and left one trivial nitpick: add a test that a saved dark theme is restored when the page loads. No human feedback that day.
-- 2026-11-05: Bashamega approved the PR without change requests and merged it; issue #393 closed automatically. I left the CodeRabbit suggestion for a possible follow-up rather than adding scope after review.
+- 2026-11-05: Bashamega approved the PR without change requests and merged it; issue #393 closed automatically. I posted one thank-you that named the CodeRabbit suggestion I had left out and offered a separate issue for it, and Bashamega replied that I can open a separate PR for it.
 
 **Status:** Merged
 
