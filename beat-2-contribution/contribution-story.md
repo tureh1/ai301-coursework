@@ -68,7 +68,7 @@ My manifest lists WebDevTools' three CI checks from `jest_tests.yml` and `format
 
 **Unit 8: Installed the PR monitor and wrote a playbook from WebDevTools' real review times**
 
-I wrote my playbook's staleness threshold from data rather than a guess: on the last five merged PRs from outside contributors (#581, #452, #441, #440, #423), the owner first responded after 0, 1, 6, 6, and 1 days, so I set 10 quiet days before one nudge and 45 days before walking away. On PR #692, an hour after opening, the run report labeled the state FEEDBACK-IN because Vercel and CodeRabbit had commented, but the drafted move was "no action — wait" because my playbook says bot comments don't count. I didn't post anything. The mismatch showed me the monitor's state label counts any comment, so I'll read the drafted move and the thread, not the label, before deciding.
+I wrote my playbook's staleness threshold from data rather than a guess: on the last five merged PRs from outside contributors (#581, #452, #441, #440, #423), the owner first responded after 0, 1, 6, 6, and 1 days, so I set 10 quiet days before one nudge and 45 days before walking away. On PR #692, an hour after opening, the run report labeled the state FEEDBACK-IN because Vercel and CodeRabbit had commented, but the drafted move was "no action — wait" because my playbook says bot comments don't count. I didn't post anything. The mismatch showed me the monitor's state label counts any comment, so I'll read the drafted move and the thread, not the label, before deciding. After Bashamega merged the PR the next day, the monitor drafted a thank-you that hedged on whether #393 had closed, so I checked the issue myself, cut that line, and shortened the thanks to one specific sentence.
 
 ---
 
@@ -217,9 +217,10 @@ I temporarily broke `page.jsx` (removed the badge trim and renamed the download)
 
 **Maintainer Feedback:**
 
-- 2026-11-04: none yet. The only comments are a Vercel deployment-authorization notice and CodeRabbit's automated review placeholder.
+- 2026-11-04: CodeRabbit (a bot) rated the merge risk minimal and left one trivial nitpick: add a test that a saved dark theme is restored when the page loads. No human feedback that day.
+- 2026-11-05: Bashamega approved the PR without change requests and merged it; issue #393 closed automatically. I left the CodeRabbit suggestion for a possible follow-up rather than adding scope after review.
 
-**Status:** Awaiting review
+**Status:** Merged
 
 **Toolkit**
 
