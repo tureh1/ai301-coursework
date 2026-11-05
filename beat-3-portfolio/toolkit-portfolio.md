@@ -22,7 +22,7 @@ WebDevTools #401: accept; difficulty: moderate
 WebDevTools #395: accept; difficulty: moderate-to-ambitious
 ```
 
-That evidence changed my decision: I selected #393 instead of competing with an existing contributor. The choice and the scout changes are recorded in course-repo commits `bb4ff59` on 2026-11-04 and `c83c82e` on 2026-11-04.
+That evidence changed my decision: I selected #393 instead of competing with an existing contributor. The choice is recorded in course-repo commits `bb4ff59` on 2026-11-04 and `c83c82e` on 2026-11-04.
 
 **repro-check**
 
@@ -51,13 +51,15 @@ After implementation, the same targeted coverage command reported `page.jsx | 10
 **Evidence:** The 2026-11-04 gate log for #692 records:
 
 ```text
-verdict: PASS
-Jest test suite: ok
-Jest coverage run: ok
-Prettier, repo-wide: ok
-pr-precheck: 7 of 7 checks passed
-diff-matches-plan: only the planned test and contributing.md changed
-repro-rerun: page.jsx moved from 0% to 100% coverage
+## 2026-11-04 16:49 [hook] Bashamega/WebDevTools @ test/readme-generator-jest-tests (base main)
+- verdict: PASS
+- manifest checks:
+  - Jest test suite (CI's `npm test`, in cmd.exe form): ... -> ok (13s)
+  - Jest coverage run (CI's `npm run test:coverage`, cmd.exe): ... -> ok (12s)
+  - Prettier, repo-wide (also the husky pre-commit hook): `npm run format:check` -> ok (4s)
+- pr-precheck checks:
+  - diff-matches-plan [pass]: Both hunks (new test file, contributing.md step) map to plan deliverables 1-7; no unexplained additions.
+  - repro-rerun [pass]: Coverage command re-run shows before 0%/8 suites/31 tests and after 100%/9 suites/36 tests, plus a regression check with failing-test output.
 ```
 
 The 2026-11-05 follow-up run also passed all three repository checks and all seven pr-precheck checks before PR #693 opened. The main contribution’s two implementation commits were `d98e5d5` for the tests and `024cbb4` for the documentation.
@@ -71,12 +73,13 @@ The 2026-11-05 follow-up run also passed all three repository checks and all sev
 **Evidence:** The monitor log preserves the state changes:
 
 ```text
-2026-11-04 — state: feedback-in
-move: no action — wait; bots do not count
+## 2026-11-04 16:51 [run] https://github.com/Bashamega/WebDevTools/pull/692
+- state: feedback-in: review feedback is in (latest from the thread: comment under a day ago)
+- move: no action — wait (no human feedback yet; bots don't count) (via the review response form)
 
-2026-11-05 — state: merged
-move: merged close-the-loop comment
-review decision: APPROVED
+## 2026-11-05 13:08 [run] https://github.com/Bashamega/WebDevTools/pull/692
+- state: merged: the PR is merged
+- move: merged close-the-loop comment (via the merged follow-up form)
 ```
 
 The result is visible in the public record: #692 merged, my single thank-you received a maintainer reply, and follow-up PR #693 contains commit `1a10258`: https://github.com/Bashamega/WebDevTools/pull/693
