@@ -150,6 +150,8 @@ Ran the ship-gate (PASS), checked the description with the voice guard (pass), p
 
 Review round 1. The fix grew the scope from tests only to one selector in `page.jsx`, so I recorded it as a deviation in `plan.md`. On the first ship-gate run my pr-precheck rejected the branch: `description-matches-diff [fail]: Description opens 'This adds one test...', but the diff adds three tests and a production fix to page.jsx.` I rewrote the opening line, and the next run passed. Suite: 39 of 39 tests.
 
+Round 2, same day. My voice guard stopped the description line "So a dark preview on a light OS showed light code blocks behind white text" under my rule against stating a cause I have not demonstrated, because I had checked the CSS but never rendered it. I reworded it to say what the stylesheet's rules imply and how I checked. Then pr-precheck rejected the branch because the Screenshots section still said "no UI change"; I corrected it. Suite: 40 of 40 tests.
+
 **Toolkit**
 
 - Tool: ship-gate and voice guard
@@ -170,6 +172,8 @@ Review round 1. The fix grew the scope from tests only to one selector in `page.
 - 2026-11-05: none yet; Jest and Prettier CI pass, and Vercel is waiting on the owner's authorization as it did on #692.
 - 2026-11-06: Bashamega requested changes: "Please check the code rabbit comments." CodeRabbit found that the preview's `body` style rule loses to github-markdown-css's `.markdown-body` colors, so the dark preview could render light, and suggested a saved-light-theme test.
 - 2026-11-10: I fetched the stylesheet and confirmed the rule, changed the selector to `body.markdown-body` in `page.jsx` (`97c4548`), added the light-theme and selector tests (`d7a5424`), and showed each fails when its fix is reverted. I pushed, updated the title and description (including the scope change to `page.jsx`), and posted one reply naming both commits with the failing-test output: https://github.com/Bashamega/WebDevTools/pull/693#issuecomment-6777608437
+
+- 2026-11-10: CodeRabbit re-reviewed and left one "Major" comment: the default stylesheet picks code-block colors from the OS color scheme, not the page's toggle. Its summary rated merge risk Low and said this could be a follow-up. Because the owner asked to address CodeRabbit's comments, I fixed it in `ee3122e`: the preview loads the dark or light 5.2.0 stylesheet based on the toggle, and a new test fails with the old single stylesheet. I posted a second reply: https://github.com/Bashamega/WebDevTools/pull/693#issuecomment-6780678396
 
 **Status:** Iterating (waiting on re-review)
 
