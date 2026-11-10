@@ -23,9 +23,9 @@ The claim step was the owner's invitation on #692 ("You are welcome you can open
 
 I kept the same `ship-manifest.md` from #692 (Jest, Jest with coverage, repo-wide Prettier). The ship-gate passed all three repo checks and all seven pr-precheck checks, and the voice guard passed the description on its first manual check.
 
-### Unit 8: PR monitor ready, nothing to send yet
+### Unit 8: Answered a change request in one reply
 
-The PR is waiting for review. I will run the monitor when a human comments, using the same playbook thresholds as #692.
+On 2026-11-06 the owner requested changes and pointed at CodeRabbit's review. Following my playbook's response rules, I pushed both fixes first, then posted one reply that answered each comment in order with the commit and failing-test output, and named the scope change instead of hiding it.
 
 ---
 
@@ -146,6 +146,10 @@ Synced my fork's main with upstream (which now includes #692), added the test on
 
 Ran the ship-gate (PASS), checked the description with the voice guard (pass), pushed, and opened #693 through Claude Code so both hooks checked it.
 
+### 2026-11-10
+
+Review round 1. The fix grew the scope from tests only to one selector in `page.jsx`, so I recorded it as a deviation in `plan.md`. On the first ship-gate run my pr-precheck rejected the branch: `description-matches-diff [fail]: Description opens 'This adds one test...', but the diff adds three tests and a production fix to page.jsx.` I rewrote the opening line, and the next run passed. Suite: 39 of 39 tests.
+
 **Toolkit**
 
 - Tool: ship-gate and voice guard
@@ -164,8 +168,10 @@ Ran the ship-gate (PASS), checked the description with the voice guard (pass), p
 **Maintainer Feedback:**
 
 - 2026-11-05: none yet; Jest and Prettier CI pass, and Vercel is waiting on the owner's authorization as it did on #692.
+- 2026-11-06: Bashamega requested changes: "Please check the code rabbit comments." CodeRabbit found that the preview's `body` style rule loses to github-markdown-css's `.markdown-body` colors, so the dark preview could render light, and suggested a saved-light-theme test.
+- 2026-11-10: I fetched the stylesheet and confirmed the rule, changed the selector to `body.markdown-body` in `page.jsx` (`97c4548`), added the light-theme and selector tests (`d7a5424`), and showed each fails when its fix is reverted. I pushed, updated the title and description (including the scope change to `page.jsx`), and posted one reply naming both commits with the failing-test output: https://github.com/Bashamega/WebDevTools/pull/693#issuecomment-6777608437
 
-**Status:** Awaiting review
+**Status:** Iterating (waiting on re-review)
 
 **Toolkit**
 
