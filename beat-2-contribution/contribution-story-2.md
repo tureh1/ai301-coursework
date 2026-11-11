@@ -25,7 +25,7 @@ I kept the same `ship-manifest.md` from #692 (Jest, Jest with coverage, repo-wid
 
 ### Unit 8: Answered a change request in one reply
 
-On 2026-11-06 the owner requested changes and pointed at CodeRabbit's review. Following my playbook's response rules, I pushed both fixes first, then posted one reply that answered each comment in order with the commit and failing-test output, and named the scope change instead of hiding it.
+On 2026-11-06 the owner requested changes and pointed at CodeRabbit's review. Following my playbook's response rules, I pushed both fixes first, then posted one reply that answered each comment in order with the commit and failing-test output, and named the scope change instead of hiding it. After a second CodeRabbit round the same day, the owner approved and merged the PR on 2026-11-11.
 
 ---
 
@@ -175,7 +175,9 @@ Round 2, same day. My voice guard stopped the description line "So a dark previe
 
 - 2026-11-10: CodeRabbit re-reviewed and left one "Major" comment: the default stylesheet picks code-block colors from the OS color scheme, not the page's toggle. Its summary rated merge risk Low and said this could be a follow-up. Because the owner asked to address CodeRabbit's comments, I fixed it in `ee3122e`: the preview loads the dark or light 5.2.0 stylesheet based on the toggle, and a new test fails with the old single stylesheet. I posted a second reply: https://github.com/Bashamega/WebDevTools/pull/693#issuecomment-6780678396
 
-**Status:** Iterating (waiting on re-review)
+- 2026-11-11: Bashamega approved the PR with no further comments and merged it (merge commit `a333603`).
+
+**Status:** Merged
 
 **Toolkit**
 
